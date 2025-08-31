@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srinivasulu Peruri | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Base styles for a dark, professional theme */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #111827; /* Dark charcoal background */
+            color: #d1d5db; /* Light gray text for contrast */
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.5s ease;
+        }
+
+        /* Container for content */
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 1rem; /* Adjusted for smaller screens */
+        }
+
+        /* Nav container for horizontal scrolling */
+        .nav-scroller {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 1rem 0;
+            white-space: nowrap;
+        }
+        .nav-scroller::-webkit-scrollbar {
+            height: 8px;
+        }
+        .nav-scroller::-webkit-scrollbar-thumb {
+            background-color: rgba(107, 114, 128, 0.5);
+            border-radius: 4px;
+        }
+        .nav-scroller::-webkit-scrollbar-track {
+            background-color: rgba(31, 41, 55, 0.5);
+        }
+
+        /* Stylish navigation buttons */
+        .nav-buttons {
+            display: inline-flex;
+            gap: 1.5rem;
+            padding: 0 1rem;
+        }
+        .nav-button {
+            flex-shrink: 0;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        .nav-button:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        
+        /* Define button colors with gradients */
+        .btn-about { background: linear-gradient(135deg, #1abc9c, #16a085); }
+        .btn-experience { background: linear-gradient(135deg, #3498db, #2980b9); }
+        .btn-certifications { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
+        .btn-skills { background: linear-gradient(135deg, #f39c12, #e67e22); }
+        .btn-projects { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+        .btn-contact { background: linear-gradient(135deg, #34495e, #2c3e50); }
+
+        /* Section transitions with a modern feel */
+        .content-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease-in-out forwards;
+        }
+        .content-section.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Style for the main titles */
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: bold;
+            color: #ffffff;
+            border-bottom: 2px solid #6b7280;
+            padding-bottom: 0.75rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Modern card design with glass-like effect */
+        .card {
+            background-color: rgba(31, 41, 55, 0.7); /* Slightly transparent dark background */
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(75, 85, 99, 0.5);
+        }
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+        }
+        
+        /* Specific theme for project cards to make them pop */
+        .project-card-theme {
+            background-color: #1f2937;
+            border: 2px solid #2d3b4b;
+            color: #ecf0f1;
+        }
+        .project-card-theme:hover {
+            border-color: #1abc9c;
+            transform: translateY(-5px) scale(1.03);
+        }
+        .project-card-theme h3 {
+            color: #1abc9c;
+            font-size: 1.5rem;
+        }
+
+        /* Typing effect cursor */
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.75rem;
+            background-color: #fff;
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+        }
+        @keyframes blink {
+            50% { background-color: transparent; }
+        }
+
+        /* Refined footer style */
+        .footer-highlight {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            margin-top: 3rem;
+        }
+        .footer-quote {
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        /* Responsive adjustments for mobile */
+        @media (max-width: 768px) {
+            .nav-button {
+                width: 80px;
+                height: 80px;
+            }
+            .section-title {
+                font-size: 1.75rem;
+            }
+            .card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto">
+        <!-- Name at the top of the page -->
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white text-center mt-6 mb-8">Peruri Srinivasulu</h1>
+
+        <!-- Navigation Buttons -->
+        <nav class="py-6 px-4">
+            <div class="flex justify-center">
+                <div class="nav-scroller overflow-x-auto whitespace-nowrap">
+                    <div class="nav-buttons inline-flex gap-1.5rem">
+                        <a href="#" data-target="about" class="nav-button btn-about">About</a>
+                        <a href="#" data-target="experience" class="nav-button btn-experience">Experience</a>
+                        <a href="#" data-target="certifications" class="nav-button btn-certifications">Certs</a>
+                        <a href="#" data-target="skills" class="nav-button btn-skills">Skills</a>
+                        <a href="#" data-target="projects" class="nav-button btn-projects">Projects</a>
+                        <a href="#" data-target="contact" class="nav-button btn-contact">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- About Me Section -->
+        <section id="about" class="content-section active">
+            <div class="profile-section flex flex-col items-center text-center">
+                <div class="profile-pic-container">
+                    <img src="C:\Users\srinivas peruri\Desktop\FreeAcadamy\portfolio\profile.png" alt="Srinivasulu Peruri Profile Picture" class="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-gray-600 shadow-lg transition-transform duration-500 ease-in-out hover:scale-105">
+                </div>
+                <div class="profile-content mt-8 text-gray-400">
+                    <h1 class="text-5xl md:text-6xl font-extrabold text-white">Hello</h1>
+                    <h2 class="text-xl md:text-2xl font-bold mt-2"><span id="job-title-text"></span><span class="typing-cursor"></span></h2>
+                    <p class="mt-4 max-w-2xl mx-auto">I am a passionate Java Developer with 3 years of experience in backend engineering. I specialize in building scalable, enterprise-level applications using Spring Boot and microservices architecture, and I'm dedicated to writing clean, efficient code that solves problems and drives business value.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="content-section my-10">
+            <h2 class="section-title">Experience</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- TCS Experience Card -->
+                <div class="card">
+                    <h3 class="text-xl font-bold mb-2 text-white">System Engineer</h3>
+                    <div class="flex items-center text-base text-gray-400 mb-4">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo_Black.svg" alt="TCS Logo" class="w-8 h-8 rounded-full mr-2 bg-white p-1">
+                        <span>TCS India • Nov 2024 - Present</span>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li>Developing and maintaining Java-based backend applications using Spring Boot and microservices architecture.</li>
+                        <li>Designed and implemented RESTful APIs that improved data exchange speed and reliability.</li>
+                        <li>Enhanced system efficiency by optimizing database queries and streamlining API workflows.</li>
+                        <li>Collaborated with cross-functional teams to deliver scalable and high-performance solutions in agile environments.</li>
+                    </ul>
+                </div>
+                <!-- Virtusa Software Engineer Card -->
+                <div class="card">
+                    <h3 class="text-xl font-bold mb-2 text-white">Software Engineer</h3>
+                    <div class="flex items-center text-base text-gray-400 mb-4">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Virtusa_Logo.svg" alt="Virtusa Logo" class="w-8 h-8 rounded-full mr-2 bg-white p-1">
+                        <span>Virtusa • May 2022 - Aug 2024</span>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li>Built and deployed enterprise-grade Java applications, leveraging Spring Boot, REST APIs, and microservices.</li>
+                        <li>Improved backend application performance by **20%** through code optimization and refactoring.</li>
+                        <li>Developed integration APIs that enabled seamless communication between external and internal systems.</li>
+                        <li>Strengthened code quality by using Git for version control and adhering to best practices in CI/CD.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="content-section my-10">
+            <h2 class="section-title">Certifications</h2>
+            <div class="card">
+                <p class="text-gray-300">Oracle Certified Java Associate (OCJA)</p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="content-section my-10">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="card space-y-4">
+                <p class="text-gray-300">
+                    <strong class="font-semibold text-white mr-2">Backend Development:</strong>
+                    Java, Spring Boot, Microservices, REST APIs
+                </p>
+                <p class="text-gray-300">
+                    <strong class="font-semibold text-white mr-2">Containerization & Orchestration:</strong>
+                    Docker, Kubernetes
+                </p>
+                <p class="text-gray-300">
+                    <strong class="font-semibold text-white mr-2">Database:</strong>
+                    SQL, Query Optimization
+                </p>
+                <p class="text-gray-300">
+                    <strong class="font-semibold text-white mr-2">Version Control & CI/CD:</strong>
+                    Git, GitHub, CI/CD
+                </p>
+            </div>
+        </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="content-section my-10">
+            <h2 class="section-title">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Employee Management Application Card -->
+                <div class="card project-card-theme">
+                    <h3 class="font-bold mb-2">Employee Management Application</h3>
+                    <p class="mb-4 text-gray-400">
+                        A full-stack CRUD application developed with Spring Boot, Spring Data JPA, MySQL, JSP, and Maven. This application includes all CRUD operations, native queries, and is enhanced with an exception handler to provide appropriate messages when data is not available.
+                    </p>
+                </div>
+                <!-- Library Management Application Card -->
+                <div class="card project-card-theme">
+                    <h3 class="font-bold mb-2">Library Management Application</h3>
+                    <p class="mb-4 text-gray-400">
+                        A console-based Java application that manages library information, including book details, borrowed books, and book availability.
+                    </p>
+                </div>
+                <!-- Login Management App Card -->
+                <div class="card project-card-theme">
+                    <h3 class="font-bold mb-2">Login Management App</h3>
+                    <p class="mb-4 text-gray-400">
+                        A console-based application where a user is redirected to a dashboard upon successful login. It provides three login attempts before locking the user out.
+                    </p>
+                </div>
+                <!-- Quiz Application Using Java Card -->
+                <div class="card project-card-theme">
+                    <h3 class="font-bold mb-2">Quiz Application Using Java</h3>
+                    <p class="mb-4 text-gray-400">
+                        A console-based application that displays a sequence of questions to a user and calculates their percentage score upon completion.
+                    </p>
+                </div>
+            </div>
+        </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="content-section my-10">
+            <h2 class="section-title">Contact</h2>
+            <div class="card flex flex-col items-center text-center space-y-4">
+                <a href="tel:8790223953" class="flex items-center text-gray-300 hover:text-blue-400 transition-colors">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20 22.846c-2.671 0-5.341-.758-7.75-2.259-3.235-2.028-5.83-4.624-7.859-7.859-1.501-2.409-2.259-5.079-2.259-7.75 0-1.393.361-2.783 1.081-3.999l-.022-.036c-.198-.328-.31-.722-.31-.722-.249-.785-.506-1.594-.506-2.427 0-.306.024-.607.071-.904.095-.595.34-.691.73-.691.134 0 .265.011.395.035.129.023.255.068.375.132l.02.011.05.027.058.038.079.068.106.103.14.167.167.218.197.283.226.36.255.441.282.529.303.62.32.709.336.8.35.894.364.993.376 1.096c.012.112.02.226.02.345 0 .16-.011.319-.033.479-.047.36-.123.693-.227 1.002-.128.384-.339.734-.627 1.022l-.022.022c-.64.64-1.077 1.34-1.281 1.898-.216.592-.093 1.155.249 1.636.353.504.818 1.025 1.396 1.603 1.657 1.657 3.511 3.511 5.489 5.489 1.657 1.657 3.511 3.511 5.489 5.489.578.578 1.036 1.043 1.54 1.396.481.342 1.044.465 1.636.249.558-.204 1.258-.641 1.898-1.281l.022-.022c.288-.288.623-.5.987-.629.358-.129.732-.211 1.127-.245.148-.013.297-.02.449-.02.102 0 .205.006.309.018.104.012.207.03.309.055.074.018.148.04.221.066.073.025.146.055.218.09.072.035.143.078.213.128.18.128.324.288.432.463.136.22.257.496.357.801.1.305.176.629.227.96.069.45.113.911.134 1.378.021.467.02 1.024-.033 1.52-.078.749-.247 1.48-.506 2.195-.506 1.32-.98 2.593-1.464 3.864-.484 1.271-.968 2.542-1.464 3.864l-.022.036c-.72.215-1.45.395-2.18.525z"/>
+                    </svg>
+                    <span>8790223953</span>
+                </a>
+                <a href="mailto:srinivasperuri71@gmail.com" class="flex items-center text-gray-300 hover:text-blue-400 transition-colors">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 12.713l-11.985-7.113c.097-.075.21-.137.332-.-191.121-.054.253-.08.391-.08h22.316c.138 0 .27.026.391.08.122.054.235.116.332.191l-11.987 7.113z"/>
+                    </svg>
+                    <span>srinivasperuri71@gmail.com</span>
+                </a>
+                <a href="https://www.linkedin.com/in/srinivasulu-peruri-240262288" target="_blank" class="flex items-center text-gray-300 hover:text-blue-400 transition-colors">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.353 7 3.541v5.694z"/>
+                    </svg>
+                    <span>LinkedIn Profile</span>
+                </a>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="footer-highlight text-center">
+            <p class="footer-quote text-gray-400">"The code is just the medium. The real value lies in the problems we solve."</p>
+            <p class="mt-2 text-gray-400">&copy; 2025 Srinivasulu Peruri. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-button');
+            const sections = document.querySelectorAll('.content-section');
+
+            function showSection(targetId) {
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const targetId = link.getAttribute('data-target');
+                    showSection(targetId);
+                });
+            });
+
+            // Typing effect for the job title
+            function typeWriter(text, i, elementId) {
+                if (i < text.length) {
+                    document.getElementById(elementId).innerHTML = text.substring(0, i + 1);
+                    setTimeout(() => typeWriter(text, i + 1, elementId), 50);
+                }
+            }
+            typeWriter("Java Developer | 3 YOE | Spring Boot, Microservices, REST APIs", 0, 'job-title-text');
+
+            // Show the initial section on load
+            showSection('about');
+        });
+    </script>
+</body>
+</html>
